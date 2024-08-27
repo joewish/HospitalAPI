@@ -1,0 +1,234 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "version":"1.0.0",
+        "description":"API for Hospital Application made specially for COVID-19",
+        "title":"Hospital API"
+    },
+    "servers":[
+        {
+            "url":"https://hospital-api-qm11.onrender.com"
+        },
+        {
+            "url":"http://localhost:8000"
+        }
+    ],
+    "paths":
+    {
+        "/doctors/register": {
+            "post":
+            {
+                "tags": ["Doctors"],
+                "summary":"Get Doctor Register",
+                "description":"Doctor will be registered",
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username":{
+                                        "type": "string"
+                                    },
+                                    "password":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":
+                {
+                    "201": {
+                        "description":"Created"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+
+        "/doctors/login": {
+            "post":
+            {
+                "tags": ["Doctors"],
+                "summary":"Get Doctor Login",
+                "description":"Doctor can login from here",
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username":{
+                                        "type": "string"
+                                    },
+                                    "password":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":
+                {
+                    "200": {
+                        "description":"OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/doctors/logout": {
+            "post":
+            {
+                "tags": ["Doctors"],
+                "summary":"Get Doctor Logout",
+                "description":"Doctor can logout from here",
+                "responses":
+                {
+                    "200": {
+                        "description":"OK"
+                    }
+                }
+            }
+        },
+
+        "/patients/register": 
+        {
+            "post":
+            {
+                "tags": ["Patients"],
+                "summary":"Register patient",
+                "description":"patient can be registered from here",
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "patientName":{
+                                        "type": "string"
+                                    },
+                                    "phoneNumber":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201": {
+                        "description":"Created"
+                    },
+                    "400": {
+                        "description": "Incorrect Credentials"
+                    }
+                }
+            }
+        },
+        "/patients/{id}/create_report": 
+        {
+            "post":
+            {
+                "tags": ["Patients"],
+                "summary":"create patient report",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        " required": true,
+                        "description": "Enter The Patient's id"
+                    }
+                ],
+                "description":"Doctor can generate patient report from here",
+                "requestBody":
+                {
+                    "content":
+                    {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "status":{
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201": {
+                        "description":"Created"
+                    },
+                    "400": {
+                        "description": "Incorrect Credentials"
+                    }
+                }
+            }
+        },
+        "/patients/{id}/all_reports": 
+        {
+            "get":
+            {
+                "tags": ["Patients"],
+                "summary":"get patient's all report",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        " required": true,
+                        "description": "Enter The Patient's id"
+                    }
+                ],
+                "description":"Doctor can get reports of patient by entering patient id",
+                "responses":{
+                    "200": {
+                        "description":"Ok"
+                    },
+                    "400": {
+                        "description": "Incorrect Credentials"
+                    }
+                }
+            }
+        },
+        "/reports/{status}": 
+        {
+            "get":
+            {
+                "tags": ["Patients"],
+                "summary":"get all patient reports with same status",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "path",
+                        " required": true,
+                        "description": "Enter The Patient's status"
+                    }
+                ],
+                "description":"Doctor can get list of patient status wise",
+                "responses":{
+                    "200": {
+                        "description":"Ok"
+                    },
+                    "400": {
+                        "description": "Incorrect Credentials"
+                    }
+                }
+            }
+        }
+    }
+}
