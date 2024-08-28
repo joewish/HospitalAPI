@@ -7,11 +7,11 @@ import swagger from 'swagger-ui-express'; // Import swagger-ui-express for servi
 
 import apiDocs from './swagger.json' assert {type: 'json'};  // Import Swagger API documentation in JSON format
 
-import router from './src/doctors/routes/doctor.routes.js';
-import router2 from './src/patients/routes/patients.routes.js';
+import doctorRoute from './src/doctors/routes/doctor.routes.js' // Import doctor routes
+import patientRoute from './src/patients/routes/patients.routes.js' // Import patient routes
 
 // Load environment variables from .env file
-dotenv.config({ path: path.resolve("config","uat.env") });
+dotenv.config({ path: path.resolve(".env") });
 // Import database connection function
 import connectDB from './config/db.js';
 
@@ -27,7 +27,9 @@ app.use(express.json());
 app.use(cookieParser())
 
 // Set up Swagger UI for API documentation
-app.use("/api-docs",swagger.serve,swagger.setup(apiDocs))
+app.use("/api-docs",
+  swagger.serve,
+  swagger.setup(apiDocs))
 
 // Define the route for the root path
 app.get('/', (req, res) => {
@@ -38,8 +40,8 @@ app.get('/', (req, res) => {
 })
 
 // Set up routes for doctors and patients
-app.use("/doctors", router);
-app.use("", router2);
+app.use("/doctors", doctorRoute);
+app.use("", patientRoute);
 
 
 // Start the server

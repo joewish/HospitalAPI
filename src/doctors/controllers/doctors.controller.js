@@ -21,7 +21,7 @@ export const register = async (req, res, next) => {
 export const login = async (req, res, next) => {
   const { username, password } = req.body;
   try {
-    const doctor = await this.doctorRepository.findDoctorByUsername(username);
+    const doctor = await findDoctorByUsername(username);
     if (!doctor) {
       return res.status(401).json({ message: "Invalid username" });
     }

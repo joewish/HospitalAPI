@@ -4,14 +4,14 @@ import moment from "moment-timezone"; // Import the moment-timezone library for 
 // Define the Report schema
 const reportSchema = new mongoose.Schema({
     doctorId: { 
-      type: mongoose.Schema.Types.ObjectId,  // Reference to the Doctor model
-      ref: 'Doctor',                         // Reference to the Doctor collection
-      required: true                         // doctorId is required
+      type: mongoose.Schema.Types.ObjectId,  
+      ref: 'Doctor',                        
+      required: true                         
     },
     patientId: { 
-      type: mongoose.Schema.Types.ObjectId,   // Reference to the Patient model
-      ref: 'Patient',                         // Reference to the Patient collection
-      required: true                          // patientId is required
+      type: mongoose.Schema.Types.ObjectId,   
+      ref: 'Patient',                         
+      required: true                          
     },
     status: { 
       type: String,                            // Status of the report

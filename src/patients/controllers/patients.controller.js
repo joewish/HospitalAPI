@@ -1,6 +1,6 @@
 import {register,createReportForPatient,getAllReportsForPatient,statusOfAllPatient} from "../models/patients.repository.js"; // Import the PatientRepository model
 
-export const register = async(req, res,next) =>{
+export const registerPatient = async(req, res,next) =>{
     const { patientName, phoneNumber } = req.body;
     try {
         const patient = await register(patientName, phoneNumber);
@@ -30,7 +30,7 @@ export const createReport = async(req, res,next) =>{
         }
     }
 
-export const statusOfAllPatient = async(req, res, next)=>{
+export const statusOfAllPatients = async(req, res, next)=>{
     try {
         const result = await statusOfAllPatient(req.params.status)
         res.status(200).json(result);

@@ -10,7 +10,7 @@
             "url":"https://hospital-api-qm11.onrender.com"
         },
         {
-            "url":"http://localhost:8000"
+            "url":"http://localhost:3000"
         }
     ],
     "paths":
