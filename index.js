@@ -24,6 +24,6 @@ app.listen(process.env.PORT || 8000, async (error) => {
     console.log(`server failed with error ${error}`);
   } else {
     await connectDB();
-    console.log(`server is running at http://localhost:${process.env.PORT || 3000}`);
+    console.log(`App started successfully`);
   }
 });
