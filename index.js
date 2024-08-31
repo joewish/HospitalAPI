@@ -25,10 +25,7 @@ app.use("/api-docs",
   swagger.setup(apiDocs))
 app.get('/', (req, res) => {
   res.redirect('/api-docs')
-  // res.send(`
-  //   <h1>Welcome to the Hospital API</h1>
-  //   <p>Click <a href="http://localhost:3000/api-docs/">here</a> to test the API with Swagger</p>
-  // `);
+ 
 })
 
 // Start the server
