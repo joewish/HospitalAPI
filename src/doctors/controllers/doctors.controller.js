@@ -33,13 +33,11 @@ export const login = async (req, res, next) => {
     // Send a token if authentication is successful
     await sendToken(doctor, res, 200);
   } catch (error) {
-    console.log("error", error); // Log the error for debugging purposes
+    console.log("error", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
 
-// logout method for doctor logout
 export const logout = async (req, res, next) => {
-  // Clear the token cookie and send a success response
   res.status(200).cookie("token", null, {expires: new Date(Date.now()),httpOnly: true,}).json({ success: true, msg: "logout successful" });
 };
