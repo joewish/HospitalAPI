@@ -7,7 +7,7 @@
     },
     "servers":[
         {
-            "url":"https://hospitalapi-41ns.onrender.com"
+            "url":"https://hospitalapi2-ncjt.onrender.com"
         },
         {
             "url":"http://localhost:3000"
