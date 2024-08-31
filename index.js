@@ -15,11 +15,6 @@ dotenv.config({ path: path.resolve("config","uat.env") });
 // express application initialization
 const app = express();
 app.use(express.json());
-
-app.use(cookieParser())
-app.use("/doctors", router);
-app.use("", router2);
-
 app.use("/api-docs",
   swagger.serve,
   swagger.setup(apiDocs))
@@ -27,6 +22,11 @@ app.get('/', (req, res) => {
   res.redirect('/api-docs')
  
 })
+app.use(cookieParser())
+app.use("/doctors", router);
+app.use("", router2);
+
+
 
 // Start the server
 app.listen(process.env.PORT || 8000, async (error) => {
